@@ -231,9 +231,9 @@ def categoryJSON():
 def showCategories():
     categories = session.query(Category).order_by(asc(Category.name))
     if 'username' not in login_session:
-        return render_template('publicCategory.html', categories=categories)
+        return render_template('publicCategory.html', categories=categories, login_session=login_session)
     else:
-        return render_template('categories.html', categories=categories)
+        return render_template('categories.html', categories=categories, login_session=login_session)
 
 # Create a new catalog
 
@@ -291,9 +291,9 @@ def showItem(category_id):
         category_id=category_id).all()
     if 'username' not in login_session:
         return render_template('publicItem.html',
-                               items=items, category=category)
+                               items=items, category=category, login_session=login_session)
     else:
-        return render_template('menu.html', items=items, category=category)
+        return render_template('menu.html', items=items, category=category, login_session=login_session)
 
 
 # Create a new menu item
